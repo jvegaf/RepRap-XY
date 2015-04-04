@@ -1,3 +1,11 @@
+IMPORTANT NOTE: 
+---------------
+This project it's actually under development. not yet finished, probably have some changes.
+
+
+ORIGINAL README:
+----------------
+
 This is the first release of a RepRap-XY 3D printer. It is based on the excellent design of Zelogik. See his github archive at:  https://github.com/zelogik/AluXY
 
 His design and my variant are discussed in the RepRap forum at:: http://forums.reprap.org/read.php?4,297740

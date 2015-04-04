@@ -7,7 +7,6 @@ def ConvertToStepAndStl(path,name,tess=0.0):
 	input = path + "/src/" + name + ".FCStd"
 	stl = path + "/stl/" + name + ".stl"
 	step = path + "/step/" + name + ".step"
-	print("Input = " + input)	
 	doc = FreeCAD.openDocument(input);
 	s = doc.ActiveObject.Shape
 	s.exportStep(step)
@@ -26,7 +25,7 @@ def MirrorPart(path, name):
 	step = path + "/step/" + name + "-mirrored.step"
 	stl = path + "/stl/" + name + "-mirrored.stl"
 
-	print "Reading: " + input	
+	print ("Reading: " + input)	
 	s1 = Part.read(input)
 	s2 = s1.mirror(FreeCAD.Base.Vector(0,0,0),FreeCAD.Base.Vector(0,0,1))
 	s2.rotate(FreeCAD.Base.Vector(0,0,0),FreeCAD.Base.Vector(0,1,0),180)
@@ -46,12 +45,14 @@ for f in os.listdir(path + "/src"):
 		if not f.startswith("RepRap-XY"):
 			files.append(f[:-6])
 
+for f in os.listdir(path + "/src/alt"):
+	files.append("alt/" + f[:-6])
 	
 #
 # Convert all FreeCAD files to STEP and STL files
 #
 for f in files:
-	print "ConvertToStepAndStl(" + path + "," + f + ")"	
+	print ("ConvertToStepAndStl(" + path + "," + f + ")")	
 	if not f.startswith("washer-M4"):
 		ConvertToStepAndStl(path,f)
 
@@ -68,5 +69,5 @@ PartNames = [ "belt-clamp",
 			 "Z-motor-mount", 
 			 "Z-block-1"  ]
 for name in PartNames:
-	print "MirrorPart(" + path + "," + name + ")"	
+	print ("MirrorPart(" + path + "," + name + ")")	
 	MirrorPart(path,name)
